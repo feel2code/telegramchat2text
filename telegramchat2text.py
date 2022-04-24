@@ -1,49 +1,51 @@
 import json
 
 
-f = open('result.json')
-data = json.load(f)
+FROM_BOT = 'Пожилая чупакабра'
+
+file = open('result.json')
+data = json.load(file)
 
 for i in data["messages"]:
     try:
-        if i["from"] == "Пожилая чупакабра" or i["text"] == '' or i["forwarded_from"] is not None or i['text'][0]['type'] != "1":
+        if i["from"] == FROM_BOT or i["text"] == '' or i["forwarded_from"] is not None or i['text'][0]['type'] != "1":
             pass
         else:
-            d = open("demofile.txt", "a")
+            demo_file = open("demofile.txt", "a")
             text = str(i['text']) + '. '
-            d.write(text)
-            d.close()
+            demo_file.write(text)
+            demo_file.close()
     except:
         try:
             if i["text"] == '' or i["forwarded_from"] is not None or i['text'][0]['type'] != "1":
                 pass
             else:
-                d = open("demofile.txt", "a")
+                demo_file = open("demofile.txt", "a")
                 text = str(i['text']) + '. '
-                d.write(text)
-                d.close()
+                demo_file.write(text)
+                demo_file.close()
         except:
             try:
                 if i["forwarded_from"] is not None or i['text'][0]['type'] != "1":
                     pass
                 else:
-                    d = open("demofile.txt", "a")
+                    demo_file = open("demofile.txt", "a")
                     text = str(i['text']) + '. '
-                    d.write(text)
-                    d.close()
+                    demo_file.write(text)
+                    demo_file.close()
             except:
                 try:
                     if i['text'][0]['type'] != "1":
                         pass
                     else:
-                        d = open("demofile.txt", "a")
+                        demo_file = open("demofile.txt", "a")
                         text = str(i['text']) + '. '
-                        d.write(text)
-                        d.close()
+                        demo_file.write(text)
+                        demo_file.close()
                 except:
-                    d = open("demofile.txt", "a")
+                    demo_file = open("demofile.txt", "a")
                     text = str(i['text']) + '. '
-                    d.write(text)
-                    d.close()
+                    demo_file.write(text)
+                    demo_file.close()
  
-f.close()
+file.close()
